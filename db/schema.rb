@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_15_073501) do
+ActiveRecord::Schema.define(version: 2018_10_15_172851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_10_15_073501) do
     t.string "shortened_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sanitanized_url"
   end
 
 end
