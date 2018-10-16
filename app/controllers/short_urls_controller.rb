@@ -10,6 +10,7 @@ class ShortUrlsController < ApplicationController
       redirect_to short_url_path(id: @url.find_existing), alert: 'Link was already shortened'
     else
       if @url.save
+        redirect_to @url, alert: 'Link shortened!'
       else
         render :new
       end
