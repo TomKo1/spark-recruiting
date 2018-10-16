@@ -1,7 +1,0 @@
-<%= render './short_urls/partials/errors', url: @url %>
-<div class='container'>
-  <%= form_for @url do |f| %>
-    <%= f.text_field :original_url, placeholder: 'Please type in your link', class: 'form-control' %>
-    <%= f.submit 'Submit', class: 'btn btn-primary mt-2' %>
-  <% end %>
-</div>

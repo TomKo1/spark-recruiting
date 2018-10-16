@@ -1,0 +1,10 @@
+.container
+  %table.table
+    %tbody
+      %tr
+        %th{:scope => "row"} Original link
+        %th= @url.original_url
+      %tr
+        %th{:scope => "row"} Shortened link
+        %th= @url.shortened_url
+  = link_to "Try this link", redirect_with_short_path(short_url: @url.shortened_url), role: 'button', class: 'btn btn-warning'

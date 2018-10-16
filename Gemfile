@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # for very basic styling
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
-
+gem "haml-rails", "~> 1.0"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
