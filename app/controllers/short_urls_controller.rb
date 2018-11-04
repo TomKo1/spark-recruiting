@@ -1,5 +1,3 @@
-require "#{Rails.root}/app/forms/url_form"
-
 class ShortUrlsController < ApplicationController
 
   def index

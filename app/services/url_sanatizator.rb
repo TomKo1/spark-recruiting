@@ -1,10 +1,14 @@
 class UrlSanatizator < Callable
 
     def initialize(url:)
+        p '!@#@#!#!@'
+        p url
+        p '213#!@@#!312'
         @dirty_url = url
     end
 
     def call
+        return nil if @dirty_url.nil?
         sanitanize()
     end
 

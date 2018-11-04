@@ -6,6 +6,7 @@ class UrlShortener < Callable
     end
 
     def call
+        return nil if @url.nil?
         short_link()
     end
 
