@@ -1,16 +1,23 @@
+require "#{Rails.root}/app/forms/url_form"
+
 class ShortUrlsController < ApplicationController
+
+  def index
+    @urls = ShortUrl.all
+  end
+
   def new
-    @url = ShortUrl.new
+    @url = UrlForm.new
   end
 
   def create
-    @url = ShortUrl.new(url_params)
-    @url.sanitanize
-    if @url.already_shortened?
+    @url = UrlForm.new(url_params)
+    if @url.exists?
       redirect_to short_url_path(id: @url.find_existing), alert: 'Link was already shortened'
     else
-      if @url.save
-        redirect_to @url, alert: 'Link shortened!'
+      result = @url.save
+      if result
+        redirect_to result, alert: 'Link shortened!'
       else
         render :new
       end

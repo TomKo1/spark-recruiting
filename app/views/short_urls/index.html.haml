@@ -1,0 +1,9 @@
+.container
+  %table.table.table-sriped
+    %tr.info
+      %th Original URL
+      %th Shortened URL
+    - @urls.each do |url|
+      %tr
+        %td= url.sanitanized_url
+        %td= url.shortened_url
