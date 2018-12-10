@@ -1,5 +1,4 @@
 class ShortUrlsController < ApplicationController
-
   def index
     @urls = ShortUrl.all
   end
@@ -10,16 +9,13 @@ class ShortUrlsController < ApplicationController
 
   def create
     @url = UrlForm.new(url_params)
+
     if @url.exists?
-      redirect_to short_url_path(id: @url.find_existing), alert: 'Link was already shortened'
-    else
-      result = @url.save
-      if result
-        redirect_to result, alert: 'Link shortened!'
-      else
-        render :new
-      end
+      redirect_to short_url_path(@url.find_existing), alert: I18n.t('controllers.shortener.alerts.wasshortened')
+    elsif @url.save
+      redirect_to result, alert: I18n.t('controllers.shortener.alerts.shortened')
     end
+    render :new
   end
 
   def redirect_original

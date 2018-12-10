@@ -1,14 +1,12 @@
 class UrlForm
+  MESSAGE = 'Link is not in proper format!'.freeze
+  URL_REGEXP = URI::regexp(%w(http https))
   include ActiveModel::Model
 
-  attr_accessor(
-      :original_url,
-      :shortened_url,
-      :sanitanized_url
-  )
+  attr_accessor :original_url, :shortened_url, :sanitanized_url
 
   validates :original_url, presence: true
-  validates :original_url, format: { with: URI::regexp(%w(http https)), message: 'Link is not in proper format!' }
+  validates :original_url, format: { with: URL_REGEXP, message: MESSAGE }
 
   # not good idea?
   def initialize(attributes={})
@@ -20,15 +18,16 @@ class UrlForm
 
   def save
     return false unless valid?
+
     ShortUrl.create(original_url: original_url, shortened_url: shortened_url, sanitanized_url: sanitanized_url)
   end
 
   def find_existing
-    DuplicateUrlQuery.new({sanitanized_url: self.sanitanized_url}).call
+    DuplicateUrlQuery.new(sanitanized_url: self.sanitanized_url).call
   end
 
   def exists?
-    find_existing().present?
+    find_existing.present?
   end
 
   # for form_for helper

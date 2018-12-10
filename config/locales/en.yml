@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  controllers:
+    shortener:
+      alerts:
+        shortened: 'Link shortened!'
+        wasshortened: 'Link was already shortened'
+
